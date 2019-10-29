@@ -1,6 +1,7 @@
 const { ApolloServer } = require("apollo-server");
 const { ApolloGateway } = require("@apollo/gateway");
 
+// connect federated services
 const gateway = new ApolloGateway({
   serviceList: [
     { name: "lifts", url: "http://localhost:4001" },
@@ -8,6 +9,7 @@ const gateway = new ApolloGateway({
   ]
 });
 
+// initiate gateway server
 (async () => {
   const { schema, executor } = await gateway.load();
 
